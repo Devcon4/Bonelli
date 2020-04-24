@@ -1,0 +1,11 @@
+{
+  "compilerOptions": {
+      "experimentalDecorators": true,
+      "target": "esnext",
+      "module": "CommonJS",
+      "lib": [
+          "esnext",
+          "dom"
+      ]
+  }
+}

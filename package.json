@@ -1,0 +1,33 @@
+{
+  "name": "bonelli",
+  "version": "0.0.1",
+  "description": "Using mdjs with lit-element to write blogs",
+  "main": "src/app.js",
+  "scripts": {
+    "watch": "parcel ./src/index.html",
+    "build": "parcel build ./src/index.html"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Devcon4/Bonelli.git"
+  },
+  "author": "devyn cyphers (devcon4)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Devcon4/Bonelli/issues"
+  },
+  "homepage": "https://github.com/Devcon4/Bonelli#readme",
+  "devDependencies": {
+    "@mdjs/core": "^0.1.9",
+    "lit-element": "^2.3.1",
+    "parcel": "^1.12.4",
+    "parcel-plugin-static-files-copy": "^2.3.1",
+    "router-slot": "^1.5.3",
+    "typescript": "^3.8.3"
+  },
+  "dependencies": {},
+  "staticFiles": {
+    "staticPath": "src/assets",
+    "watcherGlob": "**"
+  }
+}
