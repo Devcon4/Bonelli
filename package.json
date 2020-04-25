@@ -19,6 +19,9 @@
   "homepage": "https://github.com/Devcon4/Bonelli#readme",
   "devDependencies": {
     "@mdjs/core": "^0.1.9",
+    "@types/highlight.js": "^9.12.3",
+    "comlink": "^4.2.0",
+    "highlight.js": "^10.0.0",
     "lit-element": "^2.3.1",
     "parcel": "^1.12.4",
     "parcel-plugin-static-files-copy": "^2.3.1",

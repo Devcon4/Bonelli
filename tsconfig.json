@@ -1,11 +1,15 @@
 {
   "compilerOptions": {
-      "experimentalDecorators": true,
-      "target": "esnext",
-      "module": "CommonJS",
-      "lib": [
-          "esnext",
-          "dom"
-      ]
+    "experimentalDecorators": true,
+    "esModuleInterop": true,
+    "target": "esnext",
+    "module": "CommonJS",
+    "composite": true,
+    "rootDir": ".",
+    "outDir": "dist",
+    "lib": [
+      "DOM",
+      "ESNext"
+    ]
   }
 }

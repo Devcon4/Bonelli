@@ -4,10 +4,12 @@ import {
   html,
   query,
   PropertyValues,
+  css,
 } from 'lit-element';
 import { RouterSlot, IRoute } from 'router-slot';
 import 'router-slot';
 import bootstrap from './BootstrapHoudini';
+import { globalStyles, flexHostStyles } from './services/globalStyles';
 
 const routes: Array<IRoute> = [
   {
@@ -29,8 +31,16 @@ export class AppComponent extends LitElement {
     this.$routerSlotRef.add(routes);
     bootstrap();
   }
+  
+  static get styles() {
+    return [
+      globalStyles,
+      flexHostStyles,
+      css``
+    ]
+  }
 
   render() {
-    return html`<div class="app"><router-slot></router-slot></div>`;
+    return html`<div class="app bn-flex"><router-slot class="bn-flex"></router-slot></div>`;
   }
 }

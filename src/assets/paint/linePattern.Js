@@ -1,14 +1,7 @@
-console.log('loadding paint!');
-
 class linePainter {
     static get inputProperties() { return ['--line-count', '--LightShade', '--LightAccent', '--Main', '--DarkAccent', '--DarkShade', '--line-color-dark-shade', '--line-swaps', '--animation-tick']; }
     paint(ctx, geo, properties) {
 
-        console.log('paint!');
-        console.log(ctx);
-        console.log(geo);
-        console.log(properties);
-        
         const lightShade = (properties.get('--LightShade').toString());
         const lightAccent = (properties.get('--LightAccent').toString());
         const main = (properties.get('--Main').toString());
@@ -17,8 +10,6 @@ class linePainter {
         
         const lineSwaps = (properties.get('--line-swaps').toString().split(',').map(v => +v.replace('"', '')));
 
-        console.log(lightShade);
-        console.log(lineSwaps);
         ctx.fillStyle = lightShade;
 
         ctx.rect(0, 0, geo.width, geo.height);
@@ -106,10 +97,8 @@ class linePainter {
                 ctx.lineWidth = 6;
                 let first = line.points.shift();
                 ctx.moveTo(first.x, first.y);
-                console.log(`start: ${first.x}, ${first.y}`);
                 for(let point of line.points) {
                     ctx.lineTo(point.x, point.y);
-                    console.log(`move: ${point.x},${point.y}`);
                 }
 
                 ctx.stroke();
