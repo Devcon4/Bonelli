@@ -14,12 +14,11 @@
       html,
       body {
         margin: 0;
-        height: 100%;
         display: flex;
         flex-direction: column;
         flex: 1;
         min-height: 0;
-        background-color: var(--bn0);
+        background-color: var(--LightShade);
       }
 
       * {
@@ -28,12 +27,16 @@
         font-size: 18px;
         font-style: normal;
 
-        --bn0: rgb(251,240,219);
-        --bn1: rgb(229,218, 196);
-        --bn2: rgb(158,171,124);
-        --bn3: rgb(63,127,138);
-        --bn4: rgb(38,45,61);
+        --LightShade: rgb(251,240,219);
+        --LightAccent: rgb(229,218, 196);
+        --Main: rgb(158,171,124);
+        --DarkAccent: rgb(63,127,138);
+        --DarkShade: rgb(38,45,61);
+
+        --CodeblockOffset: calc(var(--GutterWidth) + 3em);
+
       }
+
     </style>
   </head>
   <body>

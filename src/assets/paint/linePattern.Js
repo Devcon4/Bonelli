@@ -1,5 +1,5 @@
 class linePainter {
-    static get inputProperties() { return ['--line-count', '--LightShade', '--LightAccent', '--Main', '--DarkAccent', '--DarkShade', '--line-color-dark-shade', '--line-swaps', '--animation-tick']; }
+    static get inputProperties() { return ['--line-count', '--LightShade', '--LightAccent', '--line-offscreen', '--Main', '--DarkAccent', '--DarkShade', '--line-color-dark-shade', '--line-swaps', '--animation-tick']; }
     paint(ctx, geo, properties) {
 
         const lightShade = (properties.get('--LightShade').toString());
@@ -7,7 +7,8 @@ class linePainter {
         const main = (properties.get('--Main').toString());
         const darkAccent = (properties.get('--DarkAccent').toString());
         const darkShade = (properties.get('--DarkShade').toString());
-        
+        var goOffscreen = (properties.get('--line-offscreen').toString());
+
         const lineSwaps = (properties.get('--line-swaps').toString().split(',').map(v => +v.replace('"', '')));
 
         ctx.fillStyle = lightShade;
@@ -22,7 +23,8 @@ class linePainter {
             return lineSwaps.flatMap((s, i) => {
                 let arr = [
                     {x: i%2 ? gutterOffset + lineSpacing : geo.width - gutterOffset + lineSpacing, y: s + headerOffset + lineSpacing},
-                    {x: i%2 ? geo.width - gutterOffset + lineSpacing : gutterOffset + lineSpacing, y: s + headerOffset + lineSpacing},
+                    ...(!goOffscreen ? [{x: i%2 ? geo.width - gutterOffset + lineSpacing : gutterOffset + lineSpacing, y: s + headerOffset + lineSpacing}]:
+                    [{x: -100, y: s + headerOffset + lineSpacing }, {x: -100, y: geo.height+100}])
                 ];
 
                 return arr;
