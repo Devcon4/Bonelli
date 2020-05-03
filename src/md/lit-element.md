@@ -1,4 +1,5 @@
 # About this Blog
+---
 
 ## Introduction
 
@@ -10,7 +11,7 @@ lately I have been playing around with a little library called Lit-Element. It's
 
 So in most modern frameworks you will have a VirtualDOM. If your unfamiliar with VDOM the basic idea is that instead of directly changing the DOM you change a Javascript representation of the DOM. Then you find the difference between your fake DOM and the real DOM, then only change the parts of the real DOM that are different.
 
-Lit-Html doesn't have that, instead it uses a fancy Javascript feature called Tagged Template Literals! 🙌 Besides ' and " Javascript has a third string syntax using ticks ( ` ). With these strings you can embed content like `My name is ${this.name}`. pretty cool huh, but even cooler is that you can "tag" this string literal with a Javascript function. That is exactly what Lit-Html does to track changes to the DOM. By watching ever set of ${} it knows when the expression changes to update the DOM around it, without diffing and other stuff.
+Lit-Html doesn't have that, instead it uses a fancy Javascript feature called Tagged Template Literals! 🙌 Besides ' and " Javascript has a third string syntax using ticks ( \` ). With these strings you can embed content like `My name is ${this.name}`. pretty cool huh, but even cooler is that you can "tag" this string literal with a Javascript function. That is exactly what Lit-Html does to track changes to the DOM. By watching ever set of ${} it knows when the expression changes to update the DOM around it, without diffing and other stuff.
 
 Lit-Element builds on top of this idea by adding some fancy decorators to easily create Web Components powered by Lit-Html rendering. Here is an example component called "dev-paragraph" that has an input attribute called "content".
 

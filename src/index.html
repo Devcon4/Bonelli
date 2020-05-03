@@ -1,14 +1,19 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
     <title>Devyn's Blog!</title>
     <meta name="viewport" content="width=device-width, minimum-scale=1.0" />
+    <meta name="Description" content="My personal blog/website where I try to share what I know.">
+    <meta charset="utf-8">
+
     <base href="/">
     <link
-      href="https://fonts.googleapis.com/icon?family=Material+Icons"
-      rel="stylesheet"
+      href="https://fonts.googleapis.com/icon?family=Material+Icons&display=swap"
+      rel="preload"
+      as="style"
     />
-    <link rel="stylesheet" href="https://use.typekit.net/iat3bbe.css" />
+    <!-- Replaced until typekit allows to set font-display. -->
+    <!-- <link rel="stylesheet" rel="preload" href="https://use.typekit.net/iat3bbe.css" /> -->
     <script src="./main.ts"></script>
     <style>
       html,
@@ -19,6 +24,19 @@
         flex: 1;
         min-height: 0;
         background-color: var(--LightShade);
+        --bnl1: rgb(251,240,219);
+        --bnl2: rgb(229,218, 196);
+        --bnl3: rgb(158,171,124);
+        --bnl4: rgb(63,127,138);
+        --bnl5: rgb(38,45,61);
+        --bnl6: var(--bnl5);
+
+        --bnd1: rgb(52, 55, 64);
+        --bnd2: rgb(41, 42, 42);
+        --bnd3: rgb(166, 123, 126);
+        --bnd4: rgb(66, 133, 140);
+        --bnd5: rgb(191, 176, 163);
+        --bnd6: var(--bnd5);
       }
 
       * {
@@ -27,15 +45,81 @@
         font-size: 18px;
         font-style: normal;
 
-        --LightShade: rgb(251,240,219);
-        --LightAccent: rgb(229,218, 196);
-        --Main: rgb(158,171,124);
-        --DarkAccent: rgb(63,127,138);
-        --DarkShade: rgb(38,45,61);
+        --LightShade: var(--bnl1);
+        --LightAccent: var(--bnl2);
+        --Main: var(--bnl3);
+        --DarkAccent: var(--bnl4);
+        --DarkShade: var(--bnl5);
+        --Text: var(--bnl6);
 
         --CodeblockOffset: calc(var(--GutterWidth) + 3em);
+        --ParagraphOffset: 32px;
 
+        color: var(--Text);
+
+        transition: all 250ms linear;
       }
+      
+      @media (prefers-color-scheme: dark) {
+        * {
+          --LightShade: var(--bnd1);
+          --LightAccent: var(--bnd2);
+          --Main: var(--bnd3);
+          --DarkAccent: var(--bnd4);
+          --DarkShade: var(--bnd5);
+          --Text: var(--bnd6);
+        }
+      }
+
+      /* adobe typekit sets font-display to auto and there isn't a way to change it currently. There should be support in the near future and this can be replaced. */
+
+      @import url("https://p.typekit.net/p.css?s=1&k=iat3bbe&ht=tk&f=28129.28400.28405.28415.28416.28417.28418&a=5736307&app=typekit&e=css");
+
+      @font-face {
+      font-family:"voltage";
+      src:url("https://use.typekit.net/af/e8da03/00000000000000003b9ada61/27/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n4&v=3") format("woff2"),url("https://use.typekit.net/af/e8da03/00000000000000003b9ada61/27/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n4&v=3") format("woff"),url("https://use.typekit.net/af/e8da03/00000000000000003b9ada61/27/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n4&v=3") format("opentype");
+      font-display:swap;font-style:normal;font-weight:400;
+      }
+
+      @font-face {
+      font-family:"mr-eaves-modern";
+      src:url("https://use.typekit.net/af/7a479b/00000000000000003b9adbb9/27/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n4&v=3") format("woff2"),url("https://use.typekit.net/af/7a479b/00000000000000003b9adbb9/27/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n4&v=3") format("woff"),url("https://use.typekit.net/af/7a479b/00000000000000003b9adbb9/27/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n4&v=3") format("opentype");
+      font-display:swap;font-style:normal;font-weight:400;
+      }
+
+      @font-face {
+      font-family:"mr-eaves-modern";
+      src:url("https://use.typekit.net/af/f119df/00000000000000003b9adbbe/27/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n7&v=3") format("woff2"),url("https://use.typekit.net/af/f119df/00000000000000003b9adbbe/27/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n7&v=3") format("woff"),url("https://use.typekit.net/af/f119df/00000000000000003b9adbbe/27/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n7&v=3") format("opentype");
+      font-display:swap;font-style:normal;font-weight:700;
+      }
+
+      @font-face {
+      font-family:"mr-eaves-sans";
+      src:url("https://use.typekit.net/af/3f314c/00000000000000003b9adbc8/27/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n2&v=3") format("woff2"),url("https://use.typekit.net/af/3f314c/00000000000000003b9adbc8/27/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n2&v=3") format("woff"),url("https://use.typekit.net/af/3f314c/00000000000000003b9adbc8/27/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n2&v=3") format("opentype");
+      font-display:swap;font-style:normal;font-weight:200;
+      }
+
+      @font-face {
+      font-family:"mr-eaves-sans";
+      src:url("https://use.typekit.net/af/b303fd/00000000000000003b9adbc9/27/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n3&v=3") format("woff2"),url("https://use.typekit.net/af/b303fd/00000000000000003b9adbc9/27/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n3&v=3") format("woff"),url("https://use.typekit.net/af/b303fd/00000000000000003b9adbc9/27/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n3&v=3") format("opentype");
+      font-display:swap;font-style:normal;font-weight:300;
+      }
+
+      @font-face {
+      font-family:"mr-eaves-sans";
+      src:url("https://use.typekit.net/af/49cf3f/00000000000000003b9adbca/27/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n4&v=3") format("woff2"),url("https://use.typekit.net/af/49cf3f/00000000000000003b9adbca/27/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n4&v=3") format("woff"),url("https://use.typekit.net/af/49cf3f/00000000000000003b9adbca/27/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n4&v=3") format("opentype");
+      font-display:swap;font-style:normal;font-weight:400;
+      }
+
+      @font-face {
+      font-family:"mr-eaves-sans";
+      src:url("https://use.typekit.net/af/22fdb3/00000000000000003b9adbcb/27/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n7&v=3") format("woff2"),url("https://use.typekit.net/af/22fdb3/00000000000000003b9adbcb/27/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n7&v=3") format("woff"),url("https://use.typekit.net/af/22fdb3/00000000000000003b9adbcb/27/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n7&v=3") format("opentype");
+      font-display:swap;font-style:normal;font-weight:700;
+      }
+
+      .tk-voltage { font-family: "voltage",sans-serif; }
+      .tk-mr-eaves-modern { font-family: "mr-eaves-modern",sans-serif; }
+      .tk-mr-eaves-sans { font-family: "mr-eaves-sans",sans-serif; }
 
     </style>
   </head>

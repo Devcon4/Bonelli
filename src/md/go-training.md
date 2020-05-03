@@ -1,4 +1,5 @@
 # Introduction to Go
+---
 
 ## Primer
 Go is a simple but powerful alternative to C++ and other web server languages that was developed by a group of devs who worked at Google. One of the focuses of Go (or Golang) was to reimagine what C++ would be like if developed today with current language needs. Go has become a popular enterprise tool, Kubernetes, Netflix, and Github are some examples of who is using Go.

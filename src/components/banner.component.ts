@@ -18,9 +18,7 @@ export default class BannerComponent extends LitElement {
         .banner {
           display: flex;
           align-items: center;
-          position: sticky;
-          margin-top: 20px;
-          top: 0;
+          margin: 20px 0;
           z-index: 1000;
           background-color: var(--DarkAccent);
           filter: drop-shadow(0px 4px 4px rgb(0,0,0,.6));
@@ -29,7 +27,6 @@ export default class BannerComponent extends LitElement {
           padding-left: var(--GutterWidth);
           padding-right: var(--GutterWidth);
           background: var(--DarkAccent);
-          margin-bottom: 20vh;
         }
   
         .heading {
@@ -42,6 +39,12 @@ export default class BannerComponent extends LitElement {
           color: var(--LightShade);
           text-decoration: underline solid var(--Main);
   
+        }
+
+        @media (prefers-color-scheme: dark) {
+          .heading {
+            color: var(--bnd6);
+          }
         }
       `
     ];

@@ -90,7 +90,7 @@ export const codeblockStyles = css`
 }
 
 .hljs-number {
-  color: #b48ead
+  color: var(--DarkAccent);
 }
 
 .hljs-regexp {

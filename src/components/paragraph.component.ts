@@ -14,7 +14,8 @@ export default class ParagraphComponent extends LitElement {
       css`
       ::slotted(p) {
         font-size: 24px;
-        padding-left: 32px;
+        padding-left: var(--ParagraphOffset);
+        padding-rigth: var(--ParagraphOffset);
         font-weight: 300;
       }
 

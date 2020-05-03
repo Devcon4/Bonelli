@@ -9,7 +9,7 @@ class linePainter {
         const darkShade = (properties.get('--DarkShade').toString());
         var goOffscreen = (properties.get('--line-offscreen').toString());
 
-        const lineSwaps = (properties.get('--line-swaps').toString().split(',').map(v => +v.replace('"', '')));
+        const lineSwaps = (properties.get('--line-swaps').toString().split(',').map(v => v.replace('"', '')));
 
         ctx.fillStyle = lightShade;
 
@@ -18,9 +18,21 @@ class linePainter {
         ctx.fill();
 
         const vw = geo.width/100;
+        const vh = geo.height/100;
 
         let calcSwaps = (gutterOffset, lineSpacing, headerOffset) => {
-            return lineSwaps.flatMap((s, i) => {
+
+            let [first] = lineSwaps;
+            let arr = goOffscreen ? [first, '800%'] : lineSwaps;
+
+            return arr.flatMap((s, i) => {
+                
+                if (s.endsWith('%')) {
+                    s = parseFloat(s.substr(0, s.length-1)) * vh;
+                } else {
+                    s = parseFloat(s);
+                }
+
                 let arr = [
                     {x: i%2 ? gutterOffset + lineSpacing : geo.width - gutterOffset + lineSpacing, y: s + headerOffset + lineSpacing},
                     ...(!goOffscreen ? [{x: i%2 ? geo.width - gutterOffset + lineSpacing : gutterOffset + lineSpacing, y: s + headerOffset + lineSpacing}]:

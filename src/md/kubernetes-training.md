@@ -1,4 +1,5 @@
 # Introduction to Kubernetes
+---
 
 ## Introduction
 Kubernetes is a powerful evolution of docker-compose. It has a more verbose configuration but isn't that bad once you get a few key ideas.
@@ -17,17 +18,19 @@ Kubernetes is a powerful evolution of docker-compose. It has a more verbose conf
 - Application Health/ready checks.
 
 ## What are words?
-Image: A set of changes to build our app. Dockerfiles create Images. Each command in a dockerfile is it's own layer. Layers get cached and makes building dockerfiles much faster.
+---
 
-Container: A runtime instance of an Image. If Images are the blueprints a Container is the actual product.
+*Image:* A set of changes to build our app. Dockerfiles create Images. Each command in a dockerfile is it's own layer. Layers get cached and makes building dockerfiles much faster.
 
-Node: A Node is a machine capable of running containers. It can be a VM or a full server. A pod can only run on one node at a time. 
+*Container:* A runtime instance of an Image. If Images are the blueprints a Container is the actual product.
 
-Pod: A pod is conceptually the same thing as a Container but for Kubernetes. Pods wrap a Container and add extra functionality like Liveliness checks and labeling. This is the smallest building block in Kubernetes. Pods are created and destroyed all the time.
+*Node:* A Node is a machine capable of running containers. It can be a VM or a full server. A pod can only run on one node at a time. 
 
-Deployment: A deployment creates multiple pods. You normally only make pods through a deployment. Deployments are like the manager who restarts failing pods or updates them to new versions.
+*Pod:* A pod is conceptually the same thing as a Container but for Kubernetes. Pods wrap a Container and add extra functionality like Liveliness checks and labeling. This is the smallest building block in Kubernetes. Pods are created and destroyed all the time.
 
-Service: A service is what hooks networks together. They are the glue that takes your external ip:port (localhost:3000) and forwards you to one of your pods ip:port (10.1.0.26:80).
+*Deployment:* A deployment creates multiple pods. You normally only make pods through a deployment. Deployments are like the manager who restarts failing pods or updates them to new versions.
+
+*Service:* A service is what hooks networks together. They are the glue that takes your external ip:port (localhost:3000) and forwards you to one of your pods ip:port (10.1.0.26:80).
 
 ## Kubectl basics
 Kubectl is the command-line tool for Kubernetes. Here are some useful commands.
@@ -38,6 +41,8 @@ Kubectl is the command-line tool for Kubernetes. Here are some useful commands.
 - `kubectl port-forward [name] [port:port]`: If you don't have a service but want to access something the port-forward command will temporarily create a service to do so.
 
 ## Creating a pod
+---
+
 Lets start to get familiar with Kubernetes by making a pod. In practice you wouldn't make pods by hand but instead create a deployment. Deployments use the same syntax though so it will be good practice.
 
 Create a new file. I normally give it the name followed by the type (`training.pod.yaml`). Yaml files can be either `.yml` or `.yaml` it doesn't matter.
@@ -151,7 +156,7 @@ Kubernetes is super powerful, there are a lot more things we didn't cover like V
 
 # Resources
 
-Here are the complete versions of the configs that we wrote above for reference.
+---
 
 ## training.pod.yaml
 

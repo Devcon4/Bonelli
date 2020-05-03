@@ -2,7 +2,6 @@
 export default async function bootstrap() {
     if ('paintWorklet' in CSS) {
       console.log('Has paintWorklet!');
-      //@ts-ignore
       // @ts-ignore I know what i'm doing!
       CSS.paintWorklet.addModule('paint/linePattern.js');
     } else {
