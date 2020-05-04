@@ -1,0 +1,25 @@
+# helm install --values traefik.values.yml stable/traefik
+dashboard:
+  enabled: true
+  domain: dashboard.cyphers.dev
+kubernetes:
+  namespaces:
+    - default
+ssl:
+  enabled: true        # Enables SSL
+  enforced: true       # Redirects HTTP to HTTPS
+acme:
+  enabled: true             # Enables Let's Encrypt certificates
+  staging: false             # Use Lets Encrypt staging area for this example. For production purposes set this to false
+  email: devyncyphers@gmail.com # Email address that Let's Encrypt uses to notify about certificate expiry etc.
+  challengeType: "dns-01"   
+  dnsProvider:              
+    name:  digitalocean     # This is why you need your domain to be under Digital Ocean control
+    digitalocean:
+      DO_AUTH_TOKEN: "" # Set this to a digital ocean api token on install or update
+  domains:
+    enabled: true
+    domainsList:
+      - main: "cyphers.dev" # Name of the domain that belongs to this certificate
+rbac:
+  enabled: true

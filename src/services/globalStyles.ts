@@ -146,7 +146,7 @@ export const codeblockStyles = css`
 }
 
 .hljs-meta,.hljs-meta-keyword {
-  color: rgb(221, 74, 104);
+  color: var(--DarkAccent);
 }
 
 .hljs-meta-string {
@@ -186,7 +186,7 @@ export const codeblockStyles = css`
 }
 
 .hljs-template-tag {
-  color: rgb(221, 74, 104);
+  color: var(--DarkAccent);
 }
 
 .abnf .hljs-attribute {
@@ -290,7 +290,7 @@ export const codeblockStyles = css`
 }
 
 .nginx .hljs-section {
-  color: rgb(221, 74, 104);
+  color: var(--DarkAccent);
 }
 
 .pf .hljs-built_in {

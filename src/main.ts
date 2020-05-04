@@ -7,7 +7,6 @@ import {
   css,
 } from 'lit-element';
 import { RouterSlot, IRoute, queryParentRouterSlot } from 'router-slot';
-import 'router-slot';
 import bootstrap from './services/BootstrapHoudini';
 import { globalStyles, flexHostStyles } from './services/globalStyles';
 import { readFileSync, readdir } from 'fs';
@@ -46,7 +45,7 @@ export const posts = [
     path: 'post/kubernetes-intro',
     name: 'A primer for Kubernetes 🚀',
     data: kubernetesIntro
-  }
+  },
 ];
 
 for(let post of posts) {
@@ -59,6 +58,11 @@ for(let post of posts) {
   });
 }
 
+routes.push({
+  path: '**',
+  redirectTo: 'launchpad',
+  pathMatch: 'full'
+});
 
 @customElement('bn-app')
 export class AppComponent extends LitElement {
