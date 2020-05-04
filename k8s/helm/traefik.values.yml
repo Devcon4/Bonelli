@@ -2,6 +2,9 @@
 dashboard:
   enabled: true
   domain: dashboard.cyphers.dev
+  auth:
+    basic:
+      dev: "$2y$05$/ZPJXT5L1gxamJzlKs36felwFZiD.PpROm28BBAGU1QjA6hXoRFai"
 kubernetes:
   namespaces:
     - default
@@ -12,7 +15,8 @@ acme:
   enabled: true             # Enables Let's Encrypt certificates
   staging: false             # Use Lets Encrypt staging area for this example. For production purposes set this to false
   email: devyncyphers@gmail.com # Email address that Let's Encrypt uses to notify about certificate expiry etc.
-  challengeType: "dns-01"   
+  challengeType: "dns-01"
+  caServer: "https://acme-v02.api.letsencrypt.org/directory"
   dnsProvider:              
     name:  digitalocean     # This is why you need your domain to be under Digital Ocean control
     digitalocean:
