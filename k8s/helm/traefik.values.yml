@@ -4,7 +4,7 @@ dashboard:
   domain: dashboard.cyphers.dev
   auth:
     basic:
-      dev: "$2y$05$/ZPJXT5L1gxamJzlKs36felwFZiD.PpROm28BBAGU1QjA6hXoRFai"
+      dev: ""
 kubernetes:
   namespaces:
     - default
