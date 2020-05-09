@@ -6,9 +6,16 @@ export default class BannerComponent extends LitElement {
   
   @property()
   text: string;
+
+  @property({ type: Boolean})
+  hideReturn: boolean = false;
   
   render() {
-    return html`<div class="banner"><h1 class="heading">${this.text}</h1></div>`;
+    return html`
+      <div class="banner">
+        ${!this.hideReturn ? html`<router-link class="link" path="../"><div class="arrow"><</div></router-link>` : undefined}
+        <h1 class="heading">${this.text}</h1>
+      </div>`;
   }
 
   static get styles() {
@@ -37,13 +44,54 @@ export default class BannerComponent extends LitElement {
           font-weight: 400;
           font-size: 42px;
           color: var(--LightShade);
-          text-decoration: underline solid var(--Main);
+          text-decoration: underline solid var(--DarkShade);
   
+        }
+
+        .link {
+          background-color: var(--LightAccent);
+          padding: 4px;
+          width: 32px;
+          height: 32px;
+          border-radius: 50%;
+          margin-right: 12px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+
+          transition: all 250ms linear;
+          outline: none;
+        }
+
+        .link:hover {
+          filter: brightness(90%);
+          cursor: pointer;
+        }
+
+        .arrow {
+          color: var(--DarkShade);
+          font-weight: bold;
+          font-size: 56px;
+          margin-top: -3px;
+          margin-left: -3px;
+          // background-color: var(--Main);
+          // width: 32px;
+          // height: 32px;
+          // clip-path: polygon(68% 0, 24% 50%, 68% 100%, 44% 100%, 0% 50%, 44% 0);
         }
 
         @media (prefers-color-scheme: dark) {
           .heading {
-            color: var(--bnd6);
+            color: var(--bnd5);
+            text-decoration-color: var(--bnd2);
+          }
+
+          .link {
+            background-color: var(--bnd5);
+          }
+
+          .arrow {
+            color: var(--bnd2);
           }
         }
       `

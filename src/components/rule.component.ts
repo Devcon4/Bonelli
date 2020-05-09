@@ -1,11 +1,14 @@
-import { LitElement, css, html, customElement } from "lit-element";
+import { LitElement, css, html, customElement, property } from "lit-element";
 import { globalStyles } from "../services/globalStyles";
 
 @customElement('bn-rule')
 export default class RuleComponent extends LitElement {
   
+  @property({ type: Boolean})
+  lockMargin: Boolean = false;
+
   render() {
-    return html`<div class="rule"></div>`;
+    return html`<div class="rule ${this.lockMargin ? 'first-rule-override' : undefined}"></div>`;
   }
   
   static get styles() {

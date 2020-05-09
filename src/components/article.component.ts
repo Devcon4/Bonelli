@@ -1,5 +1,5 @@
 import { LitElement, css, html, customElement, query, queryAll } from "lit-element";
-import { globalStyles, codeblockStyles } from "../services/globalStyles";
+import { globalStyles, codeblockStyles, fadeinAnimation } from "../services/globalStyles";
 import unified from 'unified';
 import markdown from 'remark-parse';
 import remark2rehype from 'remark-rehype';
@@ -97,6 +97,7 @@ export default class ArticleComponent extends LitElement {
     return [
       globalStyles,
       codeblockStyles,
+      fadeinAnimation,
       css`
 
       .article {
@@ -144,7 +145,6 @@ export default class ArticleComponent extends LitElement {
           color: var(--bnd3);
         }
       }
-
       `
     ];
   }

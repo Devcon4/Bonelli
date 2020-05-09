@@ -9,18 +9,11 @@ import {
 import { RouterSlot, IRoute, queryParentRouterSlot } from 'router-slot';
 import bootstrap from './services/BootstrapHoudini';
 import { globalStyles, flexHostStyles } from './services/globalStyles';
-import { readFileSync, readdir } from 'fs';
-import { basename } from 'path';
 
 import './components/article.component';
 import './components/launchpad.component';
 
-//@ts-ignore
-import goTraining from './md/go-training.md';
-//@ts-ignore
-import litElement from './md/lit-element.md';
-//@ts-ignore
-import kubernetesIntro from './md/kubernetes-training.md';
+import { posts } from './services/posts';
 
 const routes: Array<IRoute> = [
   {
@@ -30,23 +23,13 @@ const routes: Array<IRoute> = [
 
 ];
 
-export const posts = [
-  {
-    path: 'post/go-training-intro',
-    name: 'Introduction to Go!',
-    data: goTraining
-  },
-  {
-    path: 'post/lit-element-intro',
-    name: 'About this blog',
-    data: litElement
-  },
-  {
-    path: 'post/kubernetes-intro',
-    name: 'A primer for Kubernetes 🚀',
-    data: kubernetesIntro
-  },
-];
+export interface PostType {
+  path: string;
+  name: string;
+  description: string;
+  publishDate: Date;
+  data: any;
+};
 
 for(let post of posts) {
   routes.push({

@@ -17,6 +17,18 @@ export const globalStyles = css`
   }
 `;
 
+export const fadeinAnimation = css`
+  @keyframes fadein {
+    from {
+      opacity: 0;
+    }
+
+    to {
+      opacity: 1;
+    }
+  }
+`;
+
 export const flexHostStyles = css`
   :host {
     display: flex;

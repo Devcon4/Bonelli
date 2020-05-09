@@ -10,8 +10,7 @@ export default class SubheadingComponent extends LitElement {
   render() {
     return html`
       <div class="subheading">
-        <div class="title">${this.text}</div>
-        <!-- <div class="triangle"></div> -->
+        <h2 class="title">${this.text}</h2>
       </div>
     `;
   }
@@ -35,16 +34,6 @@ export default class SubheadingComponent extends LitElement {
           padding: 24px 2em 24px var(--GutterWidth);
 
           clip-path: polygon(0 0, calc(100% - 2em) 0, 100% 50%, calc(100% - 2em) 100%, 0 100%);
-        }
-
-        .triangle {
-          //margin-left: -px;
-          transform: scale(1);
-          transform-origin: top;
-          -webkit-clip-path: polygon(100% 50%, 0 0, 0 100%);
-          clip-path: polygon(100% 50%, 0 0, 0 100%);
-          background-color: var(--DarkShade);
-          width: 1em;
         }
       `
     ];
