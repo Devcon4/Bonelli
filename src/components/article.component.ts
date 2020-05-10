@@ -17,13 +17,15 @@ import './list.component';
 import './inlinecode.component';
 import './rule.component';
 import BannerComponent from "./banner.component";
+import RuleComponent from "./rule.component";
 
 @customElement('bn-article')
 export default class ArticleComponent extends LitElement {
   
   @query('article') articleRef: HTMLElement;
   @query('.article') articleClassRef: HTMLElement;
-  @queryAll('bn-rule') rules: BannerComponent[];
+  @queryAll('bn-rule') rules: RuleComponent[];
+  @queryAll('bn-banner') banners: BannerComponent[];
 
   parser = unified()
     .use(markdown)
@@ -36,9 +38,9 @@ export default class ArticleComponent extends LitElement {
       'break': (h, node) => h(node, 'bn-rule'),
       'thematicBreak': (h, node) => h(node, 'bn-rule'),
       'code': (h, node) => {
-        var value = node.value + '\n';
-        var lang = node.lang && node.lang.match(/^[^ \t]+(?=[ \t]|$)/);
-        var props = {};
+        let value = node.value + '\n';
+        let lang = node.lang && node.lang.match(/^[^ \t]+(?=[ \t]|$)/);
+        let props = {};
 
         if (lang) {
           (props as any).className = ['language-' + lang];
@@ -49,29 +51,28 @@ export default class ArticleComponent extends LitElement {
     .use(highlight)
     .use(htmlStringify);
 
-  updated() {
-      
-  }
-
   async firstUpdated() {
     //@ts-ignore I know what I'm doing!
     this.articleRef.innerHTML = await this.generate(this.data);
 
-    // The first rule will always have margin.
     setTimeout(() => {
-      let [first] = this.rules;
-      first.shadowRoot.querySelector('.rule').classList.add('first-rule-override');
+      // The first rule will always have margin.
+      let [firstRule] = this.rules;
+      firstRule.lockMargin = true;
+
+      let [firstBanner] = this.banners;
+      firstBanner.hideReturn = false;
     })
 
     // Watch for resizes and set the lineswaps so the lines cross at the right points.
     // @ts-ignore It does too exist!
     let obs = new ResizeObserver(() => {
-      var lineSwaps = [];
+      let lineSwaps = [];
 
-      for(let banner of this.rules) {
+      for(let rule of this.rules) {
         let offset = 12;
-        // let offset = lineSwaps.length <= 0 ? 150 : 138; // The first banner has a margin-top of 12px.
-        lineSwaps.push(banner.offsetTop + offset);
+        // let offset = lineSwaps.length <= 0 ? 150 : 138; // The first rule has a margin-top of 12px.
+        lineSwaps.push(rule.offsetTop + offset);
       }
 
       if (lineSwaps.length % 2) {

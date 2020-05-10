@@ -8,7 +8,7 @@ export default class BannerComponent extends LitElement {
   text: string;
 
   @property({ type: Boolean})
-  hideReturn: boolean = false;
+  hideReturn: boolean = true;
   
   render() {
     return html`
