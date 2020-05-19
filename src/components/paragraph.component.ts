@@ -28,6 +28,11 @@ export default class ParagraphComponent extends LitElement {
         margin: 0;
       }
 
+      .paragraph {
+        display: inline-block;
+
+      }
+
       `
     ];
   }
