@@ -7,15 +7,11 @@
     <meta charset="utf-8">
 
     <base href="/">
-    <link
-      href="https://fonts.googleapis.com/icon?family=Material+Icons&display=swap"
-      rel="preload"
-      as="style"
-    />
     <!-- Replaced until typekit allows to set font-display. -->
     <!-- <link rel="stylesheet" rel="preload" href="https://use.typekit.net/iat3bbe.css" /> -->
     <script src="./main.ts"></script>
     <style>
+
       html,
       body {
         margin: 0;
@@ -40,6 +36,7 @@
       }
 
       * {
+        transition: all 250ms linear;
         font-family: mr-eaves-sans, sans-serif;
         font-weight: 300;
         font-size: 18px;
@@ -51,29 +48,28 @@
         --DarkAccent: var(--bnl4);
         --DarkShade: var(--bnl5);
         --Text: var(--bnl6);
-
         --CodeblockOffset: calc(var(--GutterWidth) + 3em);
         --ParagraphOffset: 32px;
-
         color: var(--Text);
 
-        transition: all 250ms linear;
-      }
-      
-      @media (prefers-color-scheme: dark) {
-        * {
-          --LightShade: var(--bnd1);
-          --LightAccent: var(--bnd2);
-          --Main: var(--bnd3);
-          --DarkAccent: var(--bnd4);
-          --DarkShade: var(--bnd5);
-          --Text: var(--bnd5);
-        }
       }
 
+      /* @font-face {
+        font-family: 'Material Icons';
+        font-style: normal;
+        font-weight: 400;
+        src: url(../node_modules/material-design-icons/iconfont/MaterialIcons-Regular.eot); For IE6-8
+        src: local('Material Icons'),
+          local('MaterialIcons-Regular'),
+          url(../node_modules/material-design-icons/iconfont/MaterialIcons-Regular.woff2) format('woff2'),
+          url(../node_modules/material-design-icons/iconfont/MaterialIcons-Regular.woff) format('woff'),
+          url(../node_modules/material-design-icons/iconfont/MaterialIcons-Regular.ttf) format('truetype');
+      }
+       */
       /* adobe typekit sets font-display to auto and there isn't a way to change it currently. There should be support in the near future and this can be replaced. */
 
       @import url("https://p.typekit.net/p.css?s=1&k=iat3bbe&ht=tk&f=28129.28400.28405.28415.28416.28417.28418&a=5736307&app=typekit&e=css");
+
 
       @font-face {
       font-family:"voltage";

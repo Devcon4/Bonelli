@@ -34,7 +34,7 @@ Kubernetes is a powerful evolution of docker-compose. It has a more verbose conf
 
 ## Kubectl basics
 Kubectl is the command-line tool for Kubernetes. Here are some useful commands.
-- `kubectl get [all|pods|deployments|services]`: displays stuff that is running. You can filter this to just Pods, Deployments, etc or use the `-l` flag to search by labels.
+- `kubectl get [ all | pods | deployments | services ]`: displays stuff that is running. You can filter this to just Pods, Deployments, etc or use the `-l` flag to search by labels.
 - `kubectl describe [name]`: Displays information about an item.
 - `kubectl apply -f [filename.yaml]`: apply will create or update an item in Kubernetes. this is equivalent to `docker-compose up`.
 - `kubectl delete [name]`: This will remove an item from Kubernetes.

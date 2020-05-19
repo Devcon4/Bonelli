@@ -1,4 +1,4 @@
-import { LitElement, css, html, customElement, query, queryAll } from "lit-element";
+import { LitElement, css, html, customElement, query, queryAll, internalProperty } from "lit-element";
 import { globalStyles, codeblockStyles, fadeinAnimation } from "../services/globalStyles";
 import unified from 'unified';
 import markdown from 'remark-parse';
@@ -18,7 +18,10 @@ import './inlinecode.component';
 import './rule.component';
 import BannerComponent from "./banner.component";
 import RuleComponent from "./rule.component";
+import getThemeManager from "../services/theme";
+import { map } from "rxjs/operators";
 
+const themeManager = getThemeManager();
 @customElement('bn-article')
 export default class ArticleComponent extends LitElement {
   
@@ -26,6 +29,9 @@ export default class ArticleComponent extends LitElement {
   @query('.article') articleClassRef: HTMLElement;
   @queryAll('bn-rule') rules: RuleComponent[];
   @queryAll('bn-banner') banners: BannerComponent[];
+
+  @internalProperty()
+  prefersDarkStyles: 'dark-theme' | '';
 
   parser = unified()
     .use(markdown)
@@ -52,6 +58,8 @@ export default class ArticleComponent extends LitElement {
     .use(htmlStringify);
 
   async firstUpdated() {
+    themeManager.currentThemeObs.pipe(map(theme => theme === 'dark' ? 'dark-theme' : '')).subscribe(val => this.prefersDarkStyles = val);
+
     //@ts-ignore I know what I'm doing!
     this.articleRef.innerHTML = await this.generate(this.data);
 
@@ -61,7 +69,8 @@ export default class ArticleComponent extends LitElement {
       firstRule.lockMargin = true;
 
       let [firstBanner] = this.banners;
-      firstBanner.hideReturn = false;
+      firstBanner.showReturn = true;
+      firstBanner.showToggle = true;
     })
 
     // Watch for resizes and set the lineswaps so the lines cross at the right points.
@@ -91,7 +100,7 @@ export default class ArticleComponent extends LitElement {
   }
 
   render() {
-    return html`<div class="article bn-flex"><article></article></div>`;
+    return html`<div class="article bn-flex ${this.prefersDarkStyles}"><article></article></div>`;
   }
   
   static get styles() {
@@ -103,7 +112,6 @@ export default class ArticleComponent extends LitElement {
 
       .article {
         --line-swaps: '150, 80000';
-
         background-image: paint(linePattern);
       }
 
@@ -133,19 +141,11 @@ export default class ArticleComponent extends LitElement {
         color: var(--DarkAccent);
       }
 
-      .debug {
-        --LightShade: rgb(47, 49, 58);
-        --LightAccent: rgb(57, 67, 77);
-        --Main: rgb(171, 124, 127);
-        --DarkAccent: rgb(63,127,138);
-        --DarkShade: rgb(196, 181, 163);
+      .dark-theme code {
+        color: var(--bnd3);
       }
 
-      @media (prefers-color-scheme: dark) {
-        code {
-          color: var(--bnd3);
-        }
-      }
+      
       `
     ];
   }

@@ -1,7 +1,6 @@
 class linePainter {
-    static get inputProperties() { return ['--line-count', '--LightShade', '--LightAccent', '--line-offscreen', '--Main', '--DarkAccent', '--DarkShade', '--line-color-dark-shade', '--line-swaps', '--animation-tick']; }
+    static get inputProperties() { return ['--LightShade', '--LightAccent', '--line-offscreen', '--Main', '--DarkAccent', '--DarkShade', '--line-swaps']; }
     paint(ctx, geo, properties) {
-
         const lightShade = (properties.get('--LightShade').toString());
         const lightAccent = (properties.get('--LightAccent').toString());
         const main = (properties.get('--Main').toString());

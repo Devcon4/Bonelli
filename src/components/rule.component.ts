@@ -16,7 +16,7 @@ export default class RuleComponent extends LitElement {
       globalStyles,
       css`
         .rule {
-          margin-bottom: 200px;
+          margin-bottom: var(--noPaint, 200px);
         }
 
         @media all and (max-width: 1000px) {
@@ -26,7 +26,7 @@ export default class RuleComponent extends LitElement {
         }
 
         .first-rule-override {
-          margin-bottom: 200px;
+          margin-bottom: var(--noPaint, 200px);
         }
 
       `
