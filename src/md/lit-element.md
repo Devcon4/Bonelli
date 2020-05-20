@@ -18,14 +18,14 @@ Lit-Element builds on top of this idea by adding some fancy decorators to easily
 ``` typescript
 import { LitElement, customElement, property, html, css } from 'lit-element';
 
-  @customElement('dev-paragraph')
-  export default class ParagraphComponent extends LitElement {
-      @property() content: string;
-  
-      render() {
-          return html`<p>${this.content}</p>`;
-      }
-  }
+@customElement('dev-paragraph')
+export default class ParagraphComponent extends LitElement {
+    @property() content: string;
+
+    render() {
+        return html`<p>${this.content}</p>`;
+    }
+}
 ```
 
 🎉 What a perfect small component! 🎉
@@ -37,6 +37,40 @@ To bundle and compile my Typescript/Lit-Element I used the awesome zero-config b
 ## Styling
 
 No pig is complete without some lipstick and this one has plenty. It has shadows, colors and even fonts! 🙌 I like to use CSS variables wherever I can, all of the colors are hooked to five theme colors (LightShade, LightAccent, Main, DarkAccent, DarkShade). Besides being clean this lets me dynamically change the theming of the site! This lets me use the `prefers-color-scheme` media query to set a dark mode version of the site. This is normally a pain, most of the time you would using a CSS post-processor like SASS where you can't dynamically change variables. Even if you aren't you would have to dynamically change colors with some unintuitive Javascript.
+
+Lit-Element has a pretty slick way of adding CSS to components, and because ShadowDOM already has scoped styles there is no need for CSS modules which can be kind of bulky to use. Here is an example of the bn-list component with styles.
+
+``` typescript
+import { LitElement, css, html, customElement } from "lit-element";
+import { globalStyles } from "../services/globalStyles";
+
+@customElement('bn-list')
+export default class ListComponent extends LitElement {
+  
+  render() {
+    return html`<div class="list"><slot></slot></div>`;
+  }
+  
+  static get styles() {
+    return [
+      globalStyles,
+      css`
+        .list {
+          margin-left: var(--GutterWidth);
+          margin-right: var(--GutterWidth);
+        }
+
+        p {
+          margin: 0;
+        }
+      `
+    ];
+  }
+}
+
+```
+
+We can add CSS using a Tagged Template Literal just like HTML! The Styles getter returns a list so we can add multiple CSS blocks together. This is great for global styles or for reusing CSS animations.
 
 ## Magic
 The last piece of the pie is that background, just look at those sexy lines! There is some special sauce used to make that background, if you look you may have seen this line.
@@ -61,19 +95,19 @@ By wrapping markdown blocks in my own components I get better control over how t
 
 I host my sight on DigitalOcean, it's simple and works perfectly for everything I need. I have been trying to move all my sites over to use Kubernetes. This one is easy sense it's just an NGINX serving my static files. There is a Traefik ingress controller that manages routing and lets-encrypt which was super easy to setup. I'm super happy with how it turned out even though it's overkill for this simple website.
 
-## Pain points
+## Pain Points
 
 Even though I think this stack is awesome I did have some hiccups I ran into. The biggest being ShadowDOM and how Slots work in Web Components. Slots are how you can insert child elements to Web Components. We can take our component above and change it so we don't have to add a content attribute.
 
 ``` typescript
-    import { LitElement, customElement, html } from 'lit-element';
+import { LitElement, customElement, html } from 'lit-element';
 
-    @customElement('dev-paragraph')
-    export default class ParagraphComponent extends LitElement {
-        render() {
-            return html`<p><slot></slot></p>`;
-        }
+@customElement('dev-paragraph')
+export default class ParagraphComponent extends LitElement {
+    render() {
+        return html`<p><slot></slot></p>`;
     }
+}
 ```
 
 We could now use this element by adding children elements. This is sometimes referred to as Light DOM or you might have heard of the term transclusion.
@@ -87,6 +121,9 @@ We could now use this element by adding children elements. This is sometimes ref
 
 This lets us write wrappers in a natural way. The tricky part is how this relationship is shown when you inspect in Devtools is unintuitive. Your Light DOM appears next to your Shadow Root not nested how it is actually structured.
 
+Another issue was with remark2rehype which is the library that converts markdown to html and replaces code blocks with my custom components. They use a bunch of helper functions internally but don't export them. I ended up having to copy their code for these functions so I could plug in my components correctly.
+
+I also have not been able to get CSS Paint API to polyfill correctly to Firefox. Even if I add the polyfill I think because of the ShadowDOM it is not replacing properly for Firefox. This means you won't currently see my pretty lines. 🙁
 
 ## Conclusion
 That was a high level overview of this website and Lit-Elements! Overall I love this stack for small projects, It's simple and is very similar to what people want vanilla Web Components to be.

@@ -24,6 +24,11 @@ export default class ParagraphComponent extends LitElement {
         margin-right: var(--GutterWidth);
       }
 
+      ::slotted(p) img {
+        display: flex;
+        justify-content: center;
+      }
+
       ::slotted(.li-paragraph) {
         margin: 0;
       }

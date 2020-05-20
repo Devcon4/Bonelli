@@ -58,9 +58,12 @@
         color: var(--Text);
 
         transition: all 250ms linear;
+
       }
-      
-      @media (prefers-color-scheme: dark) {
+
+      @custom-media --dark-theme (prefers-color-scheme: dark);
+
+      @media (--dark-theme) {
         * {
           --LightShade: var(--bnd1);
           --LightAccent: var(--bnd2);

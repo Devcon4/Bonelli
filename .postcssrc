@@ -1,0 +1,10 @@
+{
+    "modules": true,
+    "plugins": {
+        "autoprefixer": {
+            "grid": true
+        },
+        "postcss-custom-media": {},
+        "postcss-cssnext": {}
+    }
+}

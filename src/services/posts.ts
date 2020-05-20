@@ -4,6 +4,9 @@ import goTraining from '../md/go-training.md';
 import litElement from '../md/lit-element.md';
 //@ts-ignore
 import kubernetesIntro from '../md/kubernetes-training.md';
+//@ts-ignore
+import rxjsDeepDive from '../md/rxjs-dive.md';
+
 
 import { PostType } from '../main';
 export const posts: Array<PostType> = [
@@ -28,4 +31,11 @@ export const posts: Array<PostType> = [
     publishDate: new Date(2020, 4, 22),
     data: kubernetesIntro
   },
+  {
+    path: 'post/rxjs-deep-dive',
+    name: 'What is Reactive Extensions and how does it work?',
+    description: 'So you\'ve probably heard about Reactive Extensions before, maybe you heard that Angular uses it, or you know that it\'s uses the Observer pattern. But what is Rx? Well I don\'t really know either… But I\'ve used it before so maybe I can help.',
+    publishDate: new Date(2019, 3, 12),
+    data: rxjsDeepDive
+  }
 ];

@@ -10,10 +10,14 @@ export default class BannerComponent extends LitElement {
   @property({ type: Boolean})
   hideReturn: boolean = true;
   
+  navigateBack() {
+    console.log('back!');
+  }
+
   render() {
     return html`
       <div class="banner">
-        ${!this.hideReturn ? html`<router-link class="link" path="../"><div class="arrow"><</div></router-link>` : undefined}
+        ${!this.hideReturn ? html`<a class="link" href="."><div class="arrow"><</div></a>` : undefined}
         <h1 class="heading">${this.text}</h1>
       </div>`;
   }
@@ -22,6 +26,11 @@ export default class BannerComponent extends LitElement {
     return [
       globalStyles,
       css`
+
+        a {
+          text-decoration: none;
+        }
+
         .banner {
           display: flex;
           align-items: center;
