@@ -15,6 +15,45 @@ export const globalStyles = css`
   ::-moz-selection {
     background: var(--DarkShade)
   }
+
+  .dark-theme {
+    --LightShade: var(--bnd1);
+    --LightAccent: var(--bnd2);
+    --Main: var(--bnd3);
+    --DarkAccent: var(--bnd4);
+    --DarkShade: var(--bnd5);
+    --Text: var(--bnd5);
+    color: var(--Text);
+    background-color: var(--LightShade);
+  }
+
+`;
+
+export const materialIconStyles = css`
+  .material-icons {
+    font-family: 'Material Icons';
+    font-weight: normal;
+    font-style: normal;
+    font-size: 24px;  /* Preferred icon size */
+    display: inline-block;
+    line-height: 1;
+    text-transform: none;
+    letter-spacing: normal;
+    word-wrap: normal;
+    white-space: nowrap;
+    direction: ltr;
+
+    /* Support for all WebKit browsers. */
+    -webkit-font-smoothing: antialiased;
+    /* Support for Safari and Chrome. */
+    text-rendering: optimizeLegibility;
+
+    /* Support for Firefox. */
+    -moz-osx-font-smoothing: grayscale;
+
+    /* Support for IE. */
+    font-feature-settings: 'liga';
+  }
 `;
 
 export const fadeinAnimation = css`

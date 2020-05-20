@@ -11,7 +11,7 @@ export default class LaunchpadComponent extends LitElement {
   render() {
     return html`
     <div class="launchpad bn-flex">
-      <bn-banner text="Cyphers.dev" hideReturn></bn-banner>
+      <bn-banner text="Cyphers.dev" showToggle></bn-banner>
       <bn-rule lockMargin></bn-rule>
       <bn-subheading text="Latest Posts"></bn-subheading>
       ${Object.entries(posts)

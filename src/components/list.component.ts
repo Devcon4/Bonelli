@@ -17,9 +17,14 @@ export default class ListComponent extends LitElement {
           margin-right: var(--GutterWidth);
         }
 
+        ::slotted(ul) {
+          list-style-position:inside;
+        }
+  
         p {
           margin: 0;
         }
+
       `
     ];
   }
