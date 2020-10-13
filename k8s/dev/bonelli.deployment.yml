@@ -2,6 +2,8 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: bonelli
+  annotations:
+    container.apparmor.security.beta.kubernetes.io/bonelli: runtime/default
 spec:
   replicas: 3
   selector:
@@ -12,8 +14,31 @@ spec:
       labels:
         app: bonelli
     spec:
+      securityContext:
+        runAsNonRoot: true
+        readOnlyRootFilesystem: true
+        capabilities:
+          add:
+          - NET_BIND_SERVICE
+          drop:
+          - all
       containers:
       - name: bonelli
         image: ghcr.io/devcon4/bonelli:latest
+        livenessProbe:
+            httpGet:
+              path: /
+              port: 80
+            initialDelaySeconds: 5
+            periodSeconds: 5
+        readinessProbe:
+            httpGet:
+              path: /
+              port: 80
+        imagePullPolicy: Always
         ports:
         - containerPort: 80
+        resources:
+            limits:
+              cpu: "480m"
+              memory: ".9Gi"
