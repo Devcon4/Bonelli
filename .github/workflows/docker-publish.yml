@@ -78,6 +78,7 @@ jobs:
           docker tag $IMAGE_NAME $IMAGE_ID:$VERSION
           docker push $IMAGE_ID:$VERSION
   deploy:
+    needs: [build]
     name: Deploy to Digital Ocean
     runs-on: ubuntu-latest
     if: github.event_name == 'push'
@@ -88,6 +89,6 @@ jobs:
           personalAccessToken: ${{ secrets.DIGITALOCEAN_TOKEN }}
           clusterName: hive
       - name: Apply configs
-        run: kubectl apply ./k8s/dev/
+        run: kubectl apply -f ./k8s/dev/
       - name: Rollout
         run: kubectl rollout restart deployment/bonelli
