@@ -18,7 +18,7 @@ spec:
       - name: bonelli
         image: ghcr.io/devcon4/bonelli:latest
         securityContext:
-          runAsNonRoot: true
+          # runAsNonRoot: true
           readOnlyRootFilesystem: true
           capabilities:
             add:
