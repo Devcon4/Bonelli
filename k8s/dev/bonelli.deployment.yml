@@ -14,6 +14,6 @@ spec:
     spec:
       containers:
       - name: bonelli
-        image: devync/bonelli:latest
+        image: ghcr.io/devcon4/bonelli:latest
         ports:
         - containerPort: 80
