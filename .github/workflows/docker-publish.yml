@@ -1,4 +1,4 @@
-name: Docker
+name: Main Deployment
 
 on:
   push:
@@ -11,11 +11,7 @@ on:
       - v*
       - latest
 
-  # Run tests for any PRs.
-  pull_request:
-
 env:
-  # TODO: Change variable to your image's name.
   IMAGE_NAME: bonelli
 
 jobs:
@@ -83,6 +79,7 @@ jobs:
     runs-on: ubuntu-latest
     if: github.event_name == 'push'
     steps:
+      - uses: actions/checkout@v2
       - name: Set up kubectl
         uses: matootie/dokube@v1.3.2
         with:
