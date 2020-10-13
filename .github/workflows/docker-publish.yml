@@ -38,7 +38,8 @@ jobs:
 
   # Push image to GitHub Packages.
   # See also https://docs.docker.com/docker-hub/builds/
-  push:
+  build:
+    name: Build and Push image
     # Ensure test job passes before pushing image.
 #     needs: test
 
@@ -76,3 +77,17 @@ jobs:
 
           docker tag $IMAGE_NAME $IMAGE_ID:$VERSION
           docker push $IMAGE_ID:$VERSION
+  deploy:
+    name: Deploy to Digital Ocean
+    runs-on: ubuntu-latest
+    if: github.event_name == 'push'
+    steps:
+      - name: Set up kubectl
+        uses: matootie/dokube@v1.3.2
+        with:
+          personalAccessToken: ${{ secrets.DIGITALOCEAN_TOKEN }}
+          clusterName: hive
+      - name: Apply configs
+        run: kubectl apply ./k8s/dev/
+      - name: Rollout
+        run: kubectl rollout restart deployment/bonelli
