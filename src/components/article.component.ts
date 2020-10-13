@@ -110,6 +110,11 @@ export default class ArticleComponent extends LitElement {
       fadeinAnimation,
       css`
 
+      article {
+        display: flex;
+        flex-direction: column;
+      }
+
       .article {
         --line-swaps: '150, 80000';
         background-image: paint(linePattern);

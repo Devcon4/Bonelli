@@ -17,6 +17,8 @@ export default class ParagraphComponent extends LitElement {
         padding-left: var(--ParagraphOffset);
         padding-rigth: var(--ParagraphOffset);
         font-weight: 300;
+        max-width: 1080px;
+
       }
 
       ::slotted(.bn-gutter) {
@@ -35,7 +37,6 @@ export default class ParagraphComponent extends LitElement {
 
       .paragraph {
         display: inline-block;
-
       }
 
       `

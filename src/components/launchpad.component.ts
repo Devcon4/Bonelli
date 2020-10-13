@@ -75,6 +75,7 @@ export default class LaunchpadComponent extends LitElement {
 
         display: flex;
         flex-direction: column;
+        max-width: 1080px;
       }
 
       .card>*:not(a) {

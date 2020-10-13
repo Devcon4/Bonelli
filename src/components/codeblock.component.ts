@@ -19,6 +19,7 @@ export default class CodeblockComponent extends LitElement {
         .codeblock {
           margin-left: var(--CodeblockOffset);
           margin-right: var(--CodeblockOffset);
+          max-width: 1080px;
         }
 
         .lang {
