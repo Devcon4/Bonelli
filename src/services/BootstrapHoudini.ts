@@ -10,7 +10,7 @@ export default async function bootstrap() {
 
     }
     // @ts-ignore I know what i'm doing!
-    CSS.paintWorklet.addModule('paint/linePattern.js');
+    CSS.paintWorklet.addModule('paint/line.js');
     // @ts-ignore I know what i'm doing!
     CSS.paintWorklet.addModule('paint/box.js');
     if ('registerProperty' in CSS) {
