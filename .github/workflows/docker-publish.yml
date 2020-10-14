@@ -90,4 +90,4 @@ jobs:
       - name: Rollout
         run: kubectl rollout restart deployment/bonelli
       - name: Status
-        run: kubectl rollout status deployment/bonelli
+        run: kubectl rollout status deployment/bonelli --timeout=2m
