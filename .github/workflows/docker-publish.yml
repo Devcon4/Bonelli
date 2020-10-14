@@ -89,3 +89,5 @@ jobs:
         run: kubectl apply -f ./k8s/dev/
       - name: Rollout
         run: kubectl rollout restart deployment/bonelli
+      - name: Status
+        run: kubectl rollout status deployment/bonelli
