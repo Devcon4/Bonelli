@@ -13,6 +13,7 @@ on:
 
 env:
   IMAGE_NAME: bonelli
+  ACTIONS_ALLOW_UNSECURE_COMMANDS: true
 
 jobs:
   # Run tests. TODO: Setup.
