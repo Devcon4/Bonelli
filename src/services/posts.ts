@@ -8,6 +8,8 @@ import kubernetesIntro from '../md/kubernetes-training.md';
 import rxjsDeepDive from '../md/rxjs-dive.md';
 //@ts-ignore
 import csharpNineExplainer from '../md/csharp-nine-explainer.md';
+//@ts-ignore
+import buildToolBasicsRollup from '../md/build-tool-basics-rollup.md';
 
 import { PostType } from '../main';
 export const posts: Array<PostType> = [
@@ -45,5 +47,12 @@ export const posts: Array<PostType> = [
     description: 'A rundown of new features added to C# 9.0. Record types, init only setters, top-level statements ohh my!',
     publishDate: new Date(2020, 9, 13),
     data: csharpNineExplainer
+  },
+  {
+    path: 'post/build-tool-basics-rollup',
+    name: 'Build tool basics: Rollup.js',
+    description: 'A look at what it means to bundle a modern website, in particular how to use Rollup.js. What is Rollup and why would I use it?',
+    publishDate: new Date(2021, 3, 19),
+    data: buildToolBasicsRollup
   }
 ];
