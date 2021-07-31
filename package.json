@@ -38,7 +38,7 @@
     "lit-element": "^2.4.0",
     "material-design-icons": "^3.0.1",
     "parcel": "^1.12.4",
-    "parcel-bundler": "^1.12.4",
+    "parcel-bundler": "^1.12.5",
     "parcel-plugin-markdown-string": "^1.4.2",
     "parcel-plugin-static-files-copy": "^2.5.1",
     "postcss-cssnext": "^3.1.0",
