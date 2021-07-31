@@ -31,7 +31,7 @@
     "@types/unist": "^2.0.3",
     "autoprefixer": "^9.8.6",
     "comlink": "^4.3.0",
-    "css-paint-polyfill": "^2.0.0",
+    "css-paint-polyfill": "^3.3.0",
     "hast-util-is-element": "^1.1.0",
     "highlight.js": "^10.6.0",
     "jest": "^26.5.3",
