@@ -32,7 +32,7 @@
     "autoprefixer": "^9.8.6",
     "comlink": "^4.3.0",
     "css-paint-polyfill": "^2.0.0",
-    "hast-util-is-element": "^1.1.0",
+    "hast-util-is-element": "^2.1.2",
     "highlight.js": "^10.6.0",
     "jest": "^26.5.3",
     "lit-element": "^2.4.0",
