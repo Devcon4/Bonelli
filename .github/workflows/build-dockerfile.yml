@@ -3,6 +3,8 @@ on:
   push:
     branches:
       - "main"
+env:
+  ACTIONS_ALLOW_UNSECURE_COMMANDS: true
 jobs:
   get_semver:
     name: Create semver
