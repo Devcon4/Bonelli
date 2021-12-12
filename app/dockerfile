@@ -33,11 +33,12 @@ FROM nginxinc/nginx-unprivileged:alpine as runtime
 # We override default.conf so of course it's different.
 ENV NGINX_ENTRYPOINT_QUIET_LOGS=true
 
-RUN mkdir /tmp/proxy_temp \
-  && mkdir /tmp/client_temp \
-  && mkdir /tmp/fastcgi_temp \
-  && mkdir /tmp/uwsgi_temp \
-  && mkdir /tmp/scgi_temp
+# TODO: Investigate how to run nginx with readonly filesystem.
+# RUN mkdir /tmp/proxy_temp \
+#   && mkdir /tmp/client_temp \
+#   && mkdir /tmp/fastcgi_temp \
+#   && mkdir /tmp/uwsgi_temp \
+#   && mkdir /tmp/scgi_temp
 
 COPY --from=certs --chown=nginx:nginx /selfsigned.key /etc/ssl/certs/tls.key
 COPY --from=certs --chown=nginx:nginx /selfsigned.crt /etc/ssl/certs/tls.crt
