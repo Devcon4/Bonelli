@@ -10,10 +10,13 @@ import routeState from './services/routeState';
 import themeState, { ThemeType } from './services/themeState';
 import { flexHostStyles, globalStyles } from './styles/globalStyles';
 
-const lineBlob = new Blob([line], { type: 'text/javascript' });
-const lineUrl = URL.createObjectURL(lineBlob);
-// @ts-ignore This does too exist!
-CSS.paintWorklet.addModule(lineUrl);
+if ('paintWorklet' in CSS) {
+  const lineBlob = new Blob([line], { type: 'text/javascript' });
+  const lineUrl = URL.createObjectURL(lineBlob);
+  CSS.paintWorklet.addModule(lineUrl);
+} else {
+  document.body.style.setProperty('--noPaint', 'false');
+}
 
 @customElement('bnli-app')
 export default class AppElement extends LitElement {
