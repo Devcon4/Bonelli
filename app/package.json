@@ -15,7 +15,11 @@
     "url": "git+ssh://git@github.com/Devcon4/bonelli.git"
   },
   "author": "Devyn Cyphers (devcon4)",
-  "license": "MIT",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Devcon4/Bonelli/issues"
+  },
+  "homepage": "https://github.com/Devcon4/Bonelli#readme",
   "devDependencies": {
     "@babel/core": "^7.15.8",
     "@babel/plugin-proposal-class-properties": "^7.14.5",
