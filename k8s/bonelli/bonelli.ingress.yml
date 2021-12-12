@@ -6,9 +6,9 @@ spec:
   entryPoints:
     - websecure
   tls:
-    secretName: devyncyphers-io-cert
+    secretName: cyphers-dev-cert
   routes:
-    - match: Host(`devyncyphers.io`)
+    - match: Host(`cyphers.dev`)
       kind: Rule
       services:
         - kind: Service
