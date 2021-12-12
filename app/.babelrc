@@ -1,0 +1,14 @@
+{
+  "presets": [
+    ["@babel/env", {
+      "useBuiltIns": "usage",
+      "corejs": 3
+    }],
+    "@babel/typescript" 
+  ],
+  "plugins": [
+    ["@babel/plugin-proposal-decorators", {"decoratorsBeforeExport": true}],
+    ["@babel/proposal-class-properties"],
+    "@babel/proposal-object-rest-spread"
+  ]
+}
