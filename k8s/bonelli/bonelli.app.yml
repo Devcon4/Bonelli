@@ -1,0 +1,62 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: bonelli
+spec:
+  selector:
+    app: bonelli
+  ports:
+    - name: bonelliport
+      port: 4290
+      targetPort: 4443
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: bonelli
+  annotations:
+    container.apparmor.security.beta.kubernetes.io/bonelli: runtime/default
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: bonelli
+  template:
+    metadata:
+      labels:
+        app: bonelli
+    spec:
+      volumes:
+        - name:  cert
+          secret: devyncyphers-io-cert
+      containers:
+        - name: bonelli
+          image: ghcr.io/devcon4/bonelli:latest
+          volumeMounts:
+            - mountPath: /etc/ssl/certs
+              name: cert
+          securityContext:
+            runAsNonRoot: true
+            readOnlyRootFilesystem: true
+            capabilities:
+              add:
+                - NET_BIND_SERVICE
+              drop:
+                - all
+          livenessProbe:
+            httpGet:
+              path: /
+              port: 8080
+            initialDelaySeconds: 5
+            periodSeconds: 5
+          readinessProbe:
+            httpGet:
+              path: /
+              port: 8080
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 4443
+          resources:
+            limits:
+              cpu: "240m"
+              memory: ".25Gi"

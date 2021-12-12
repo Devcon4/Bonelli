@@ -1,0 +1,11 @@
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: devyncyphers-io-cert
+spec:
+  dnsNames:
+    - devyncyphers.io
+  secretName: devyncyphers-io-cert
+  issuerRef:
+    name: digitalocean-issuer
+    kind: ClusterIssuer

@@ -94,8 +94,8 @@ jobs:
           personalAccessToken: ${{ secrets.DIGITALOCEAN_TOKEN }}
           clusterName: hive
       - name: Apply configs
-        run: kubectl apply -f ./k8s/dev/
+        run: kubectl apply -k ./k8s/bonelli/
       - name: Rollout
-        run: kubectl rollout restart deployment/bonelli
+        run: kubectl rollout restart -n bonelli deployment/bonelli
       - name: Status
-        run: kubectl rollout status deployment/bonelli --timeout=2m
+        run: kubectl rollout status  -n bonelli deployment/bonelli --timeout=2m

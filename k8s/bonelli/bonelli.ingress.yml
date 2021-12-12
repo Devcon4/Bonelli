@@ -1,0 +1,17 @@
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: bonelli-ingress
+spec:
+  entryPoints:
+    - websecure
+  tls:
+    secretName: devyncyphers-io-cert
+  routes:
+    - match: Host(`devyncyphers.io`)
+      kind: Rule
+      services:
+        - kind: Service
+          name: bonelli
+          namespace: bonelli
+          port: 4290
