@@ -29,7 +29,7 @@ spec:
       volumes:
         - name:  cert
           secret:
-            secretName: devyncyphers-io-cert
+            secretName: cyphers-dev-cert
       containers:
         - name: bonelli
           image: ghcr.io/devcon4/bonelli:latest
