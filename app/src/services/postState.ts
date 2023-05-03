@@ -50,6 +50,13 @@ const posts: Array<PostType> = [
     description: 'A look at what it means to bundle a modern website, in particular how to use Rollup.js. What is Rollup and why would I use it?',
     publishDate: new Date(2021, 3, 19),
     data: async () => await import('../md/build-tool-basics-rollup.md')
+  },
+  {
+    path: 'intro-to-containerization',
+    name: 'Introduction to Containerization',
+    description: 'A primer into the world of Containerization. How to do basic Docker commands and write a Dockerfile.',
+    publishDate: new Date(2023, 4, 3),
+    data: async () => await import('../md/intro-to-containerization.md')
   }
 ];
 
