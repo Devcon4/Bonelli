@@ -57,6 +57,13 @@ const posts: Array<PostType> = [
     description: 'A primer into the world of Containerization. How to do basic Docker commands and write a Dockerfile.',
     publishDate: new Date(2023, 4, 3),
     data: async () => await import('../md/intro-to-containerization.md')
+  },
+  {
+    path: 'intro-to-dotnet',
+    name: 'Introduction to .NET',
+    description: 'Brief breakdown of how applications run in .NET.',
+    publishDate: new Date(2023, 10, 25),
+    data: async () => await import('../md/intro-to-dotnet.md')
   }
 ];
 
