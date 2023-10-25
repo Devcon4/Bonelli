@@ -59,11 +59,11 @@ const posts: Array<PostType> = [
     data: async () => await import('../md/intro-to-containerization.md')
   },
   {
-    path: 'intro-to-dotnet',
-    name: 'Introduction to .NET',
-    description: 'Brief breakdown of how applications run in .NET.',
+    path: 'dotnet-basics',
+    name: '.NET Basics',
+    description: 'Brief breakdown of how applications run in modern .NET.',
     publishDate: new Date(2023, 10, 25),
-    data: async () => await import('../md/intro-to-dotnet.md')
+    data: async () => await import('../md/dotnet-basics.md')
   }
 ];
 
