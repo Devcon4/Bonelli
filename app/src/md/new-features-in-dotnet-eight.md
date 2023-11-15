@@ -17,7 +17,6 @@ There are a ton of new features out in .net 8! Here is a brief overview of every
 
 - Primary Constructors
 - Collection Expressions
-- Array syntax
 - Type Aliases
 - Interceptors
 
@@ -140,7 +139,7 @@ public class NumberService {
     List<int> set3 = [11, 12, 13, 14, 15];
 
     // Old way:
-    // return mainSet.Concat(set1).Concat(set2).ToList();
+    // return mainSet.Concat(set1).Concat(set2).Concat(set3).ToList();
 
     // New way using the spread operator:
     return [.. mainSet, .. set1, .. set2, .. set3];
