@@ -143,7 +143,7 @@ public class NumberService {
     // return mainSet.Concat(set1).Concat(set2).ToList();
 
     // New way using the spread operator:
-    return [.. mainSet, .. set1, .. set2];
+    return [.. mainSet, .. set1, .. set2, .. set3];
   }
 }
 ```
