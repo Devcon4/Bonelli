@@ -16,6 +16,11 @@ export default class RuleComponent extends LitElement {
     return [
       globalStyles,
       css`
+        :host {
+          margin-top: 24px;
+
+        }
+
         .rule {
           margin-bottom: var(--noPaint, 200px);
         }

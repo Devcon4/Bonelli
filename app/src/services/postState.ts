@@ -62,14 +62,14 @@ const posts: Array<PostType> = [
     path: 'dotnet-basics',
     name: '.NET Basics',
     description: 'Brief breakdown of how applications run in modern .NET.',
-    publishDate: new Date(2023, 10, 25),
+    publishDate: new Date(2023, 9, 25),
     data: async () => await import('../md/dotnet-basics.md')
   },
   {
     path: 'new-features-in-dotnet-eight',
     name: 'New features in .NET 8',
     description: 'A rundown of new features coming in .net 8. Primary Constructors, Native AOT, and more!',
-    publishDate: new Date(2023, 11, 15),
+    publishDate: new Date(2023, 10, 15),
     data: async () => await import('../md/new-features-in-dotnet-eight.md')
   }
 ];

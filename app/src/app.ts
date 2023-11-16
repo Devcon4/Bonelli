@@ -44,23 +44,6 @@ export default class AppElement extends LitElement {
 
   render() {
     return html`<div class="app flex">
-      <!-- <div class="header">
-        <h1>🐦 App Works!</h1>
-        <mwc-icon-button
-          id="theme-btn"
-          @click=${this.toggleThemeAction}
-          .icon="${this.colorTheme === 'dark' ? 'light_mode' : 'nights_stay'}"
-        ></mwc-icon-button>
-      </div>
-      <div class="box-list">
-        <div class="box box-1">primary</div>
-        <div class="box box-2">primary variant</div>
-        <div class="box box-3">secondary</div>
-        <div class="box box-4">secondary variant</div>
-        <div class="box box-5">background</div>
-        <div class="box box-6">surface</div>
-        <div class="box box-7">error</div>
-      </div> -->
       <router-slot class="flex"></router-slot>
     </div>`;
   }

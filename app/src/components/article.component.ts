@@ -8,6 +8,7 @@ import { map } from "rxjs/operators";
 import { unified } from 'unified';
 import { u } from 'unist-builder';
 import { async } from '../services/decoratorUtils';
+import { getLinkId } from '../services/linkUtils';
 import { all, list, listItem } from "../services/mdHandlerHelpers";
 import themeState from '../services/themeState';
 import { codeblockStyles } from "../styles/codeblockStyles";
@@ -21,9 +22,19 @@ import './paragraph.component';
 import './rule.component';
 import RuleComponent from "./rule.component";
 import './subheading.component';
- 
+import {common, all as alltypes} from 'lowlight';
+import './link.component';
+
 export interface IArticle {
   data: () => Promise<typeof import("*.md")>;
+}
+
+export const pickFromLangs = <T extends keyof typeof alltypes>(...langs: T[]) => {
+  let res: typeof alltypes = {};
+  for(let lang of langs) {
+    res[lang] = alltypes[lang];
+  }
+  return res;
 }
 
 @customElement('bn-article')
@@ -42,8 +53,9 @@ export default class ArticleComponent extends LitElement implements IArticle {
   parser = unified()
     .use(markdown)
     .use(remark2rehype, {handlers: {
+      'link': (h, node) => h(node, 'bn-link', {path: node.url}, all(h, node)),
       'paragraph': (h, node) => h(node, 'bn-paragraph', [h(node, 'p', {class: 'bn-gutter'}, all(h, node))]),
-      'heading': (h, node) => h(node, node.depth === 1 ? 'bn-banner' : 'bn-subheading', {text: node.children[0].value}),
+      'heading': (h, node) => h(node, node.depth === 1 ? 'bn-banner' : 'bn-subheading', {text: node.children[0].value, id: getLinkId(node.children[0].value)}),
       'list': (h, node) => h(node, 'bn-list', [list(h, node)]),
       'listItem': (h, node, parent) => listItem(h, node, parent),
       'break': (h, node) => h(node, 'bn-rule'),
@@ -59,8 +71,17 @@ export default class ArticleComponent extends LitElement implements IArticle {
         return h(node, 'bn-codeblock', {langName: node.lang}, [h(node.position, 'pre', [h(node, 'code', props, [u('text', value)])])])
       }
     }})
-    .use(highlight)
+    .use(highlight, {languages: {...common, ...pickFromLangs('dockerfile', 'powershell', 'protobuf', 'pgsql', 'nginx', 'http', 'haskell', 'glsl', 'fsharp')}})
     .use(htmlStringify);
+  // If the url has a hash, see if there is an element with that id and scroll to it.
+  scrollIfHash() {
+    if (window.location.hash) {
+      let element = this.shadowRoot.getElementById(window.location.hash.substring(1));
+      if (element) {
+        element.scrollIntoView({behavior: 'smooth', block: 'start'});
+      }
+    }
+  }
 
   async firstUpdated() {
     this.articleRef.innerHTML = await this.generate(await this.data());
@@ -73,6 +94,8 @@ export default class ArticleComponent extends LitElement implements IArticle {
       let [firstBanner] = this.banners;
       firstBanner.showReturn = true;
       firstBanner.showToggle = true;
+
+      this.scrollIfHash();
     })
 
     // Watch for resizes and set the lineswaps so the lines cross at the right points.
@@ -100,6 +123,14 @@ export default class ArticleComponent extends LitElement implements IArticle {
     return String(res);
   }
 
+  //Listen for history changes and scroll to the element with the id of the hash.
+  connectedCallback() {
+    super.connectedCallback();
+    window.addEventListener('navigationend', () => {
+      this.scrollIfHash();
+    });
+  }
+
   render() {
     return html`<div class="article bn-flex ${this.prefersDarkStyles}"><article></article></div>`;
   }
@@ -122,8 +153,12 @@ export default class ArticleComponent extends LitElement implements IArticle {
         --line-background: var(--bnli-background);
         --line-color-left: var(--light, var(--bnli11)) var(--dark, var(--bnli7));
         --line-color-center: var(--light, var(--bnli13)) var(--dark, var(--bnli9));
-        --line-color-right: var(--light, var(--bnli2)) var(--dark, var(--bnli4));
+        --line-color-right: var(--light, var(--bnli1)) var(--dark, var(--bnli4));
         background-image: paint(linePattern);
+
+        scroll-behavior: smooth;
+
+        padding-bottom: 25vh;
       }
 
       @media all and (max-width: 1000px) {

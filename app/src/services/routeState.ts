@@ -19,7 +19,8 @@ function mapRoutes(posts: PostType[]): IRoute[] {
     ...posts.map<IRoute>(p => ({
       path: `post/${p.path}`,
       component: async () => await import('../components/article.component'),
-      setup: c => (c as unknown as IArticle).data = p.data
+      setup: c => (c as unknown as IArticle).data = p.data,
+      preserveQuery: true
     })),
   ];
 }

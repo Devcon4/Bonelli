@@ -19,12 +19,31 @@ export default class LaunchpadComponent extends LitElement {
     <div class="launchpad bn-flex">
       <bn-banner text="Cyphers.dev" showToggle></bn-banner>
       <bn-rule lockMargin></bn-rule>
-      <bn-subheading text="Latest Posts"></bn-subheading>
+      ${this.newestPost()}
+      <bn-subheading text="All Posts"></bn-subheading>
       ${Object.entries(this.posts)
         .sort((a, b) => a[1].publishDate > b[1].publishDate ? -1 : 1)
         .map(([path, val]) => this.card(val))
       }
     </div>`;
+  }
+
+  newestPost() {
+    let checkDate = new Date();
+    // show Within the last month
+    checkDate.setMonth(checkDate.getMonth() - 1);
+
+    let newestPost = Object.entries(this.posts)
+      .sort((a, b) => a[1].publishDate > b[1].publishDate ? -1 : 1)
+      .filter(([path, val]) => val.publishDate > checkDate)
+      .map(([path, val]) => val);
+    console.log(newestPost);
+    if(newestPost.length > 0) {
+      return html`
+        <bn-subheading text="Newest Post"></bn-subheading>
+        ${this.card(newestPost[0])}
+      `;
+    }
   }
 
   card(post: PostType) {

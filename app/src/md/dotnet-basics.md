@@ -9,11 +9,11 @@ This article will cover some of the conceptual differences between modern .NET c
 ## Key Concepts
 There are several key concepts to understand about how .NET applications work.
 
-- **CLI**
-- **Hosting Model**
-- **Configuration**
-- **Environment**
-- **Dependency Injection**
+- [CLI](#cli)
+- [Hosting Model](#hosting-model)
+- [Configuration](#configuration)
+- [Environment](#environment)
+- [Dependency Injection](#dependency-injection)
 
 Before we look at these in more detail lets create a simple .NET app in order to understand better what we are talking about.
 

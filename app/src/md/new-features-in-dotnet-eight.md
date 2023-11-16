@@ -5,23 +5,22 @@ There are a ton of new features out in .net 8! Here is a brief overview of every
 
 ### .net 8 features
 
-- Container changes
-- Frozen/Concurrent types
-- Metrics API
-- Keyed DI services
-- Hosted Lifecycle Service
-- Source Generators
-- NativeAOT
+- [Container changes](#net-8-features)
+- [Frozen types](#frozen-types)
+- [Metrics API](#metrics-api)
+- [Keyed DI services](#keyed-di-services)
+- [Hosted Lifecycle Service](#hosted-lifecycle-services)
+- [Source Generators](#source-generators)
+- [NativeAOT](#nativeaot)
 
 ### C# 12 features
 
-- Primary Constructors
-- Collection Expressions
-- Type Aliases
-- Interceptors
+- [Primary Constructors](#primary-constructors)
+- [Collection Expressions](#collection-expressions)
+- [Type Aliases](#type-aliases)
+- [Interceptors](#interceptors)
 
 ### Container changes
-
 All aspnet Linux containers now have a non-root user called `app`. This makes it easier to build non-root .net container. Non-root is preferred in deploying to cloud environments.
 
 ### Frozen types

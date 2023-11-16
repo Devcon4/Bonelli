@@ -8,9 +8,10 @@ export const codeblockStyles = css`
   padding: .5em;
   background: var(--bnli-surface);
   filter: drop-shadow(0px 3px 2px rgba(0,0,0, 0.2));
+  color: var(--light, var(--bnli1)) var(--dark, var(--bnli4));
 }
 
-.hljs,.hljs-subst {
+.hljs .hljs-subst {
   color: var(--bnli-secondary)
 }
 

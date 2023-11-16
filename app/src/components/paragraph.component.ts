@@ -1,9 +1,40 @@
 import { css, html, LitElement } from 'lit';
-import { customElement } from 'lit/decorators.js';
+import { customElement, queryAll } from 'lit/decorators.js';
 import { globalStyles } from '../styles/globalStyles';
 
 @customElement('bn-paragraph')
 export default class ParagraphComponent extends LitElement {
+
+  // Get all a tags in the slot and add the current path to the href
+  firstUpdated() {
+    setTimeout(() => {
+
+    let aTags = this.shadowRoot?.querySelectorAll('a');
+    console.log(aTags);
+    if(aTags) {
+      aTags.forEach((aTag) => {
+        let href = aTag.getAttribute('href');
+        if(href) {
+          aTag.setAttribute('href', window.location.pathname + href);
+        }
+      });
+    }
+    
+  });
+  }
+
+  // firstUpdated() {
+  //   console.log(this.aTags)
+  //   if(this.aTags) {
+  //     this.aTags.forEach((aTag) => {
+  //       let href = aTag.getAttribute('href');
+  //       if(href) {
+  //         aTag.setAttribute('href', window.location.pathname + href);
+  //       }
+  //     });
+  //   }
+  // }
+
   render() {
     return html`<div class="paragraph bn-flex"><slot></slot></div>`;
   }
@@ -32,6 +63,7 @@ export default class ParagraphComponent extends LitElement {
 
         ::slotted(.li-paragraph) {
           margin: 0;
+          padding: 0px;
         }
 
         .paragraph {
