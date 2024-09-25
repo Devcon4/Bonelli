@@ -71,6 +71,13 @@ const posts: Array<PostType> = [
     description: 'A rundown of new features coming in .net 8. Primary Constructors, Native AOT, and more!',
     publishDate: new Date(2023, 10, 15),
     data: async () => await import('../md/new-features-in-dotnet-eight.md')
+  },
+  {
+    path: 'modern-angular-with-signals',
+    name: 'Modern Angular with Signals',
+    description: 'A look at modern patterns in Angular and how to use Signals to manage state.',
+    publishDate: new Date(2024, 9, 24),
+    data: async () => await import('../md/modern-angular-with-signals.md')
   }
 ];
 
