@@ -1,9 +1,9 @@
 import { rollup } from 'rollup';
-import { terser } from 'rollup-plugin-terser';
+import { minify } from 'terser';
 
 const prefix = 'iife-str:';
 
-export default function ({ minify } = {}) {
+export default function ({ minify: shouldMinify = false } = {}) {
 	return {
 		name: 'iife-str',
 		async resolveId(id, importer) {
@@ -17,13 +17,20 @@ export default function ({ minify } = {}) {
 			const path = id.slice(prefix.length);
 			const build = await rollup({
 				input: path,
-				plugins: minify ? [terser()] : [],
+				plugins: [],
 			});
 
 			const { output } = await build.generate({ format: 'iife' });
 			const chunk = output[0];
+			
+			// Apply minification if requested
+			let code = chunk.code;
+			if (this.meta.watchMode === false && shouldMinify) {
+				const result = await minify(code);
+				code = result.code || code;
+			}
 
-			return `export default ${JSON.stringify(chunk.code)}`;
+			return `export default ${JSON.stringify(code)}`;
 		},
 	};
 }
