@@ -193,7 +193,7 @@ Finally to put these all together if we take our Model matrix, our View matrix, 
 
 There are multiple formats of how to store 3D models. A popular one, and what we will focus on here, is glTF. It is considered a distribution format so is ideal for loading in a game. They store a ton of information and can be quite daunting at first glance. But once you understand the terminology and principles they are easy to understand. Here is a cheatsheet on the glTF format.
 
-<image src="https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/figures/gltfOverview-2.0.0d.png?raw=true">
+![glTF Cheatsheet](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/figures/gltfOverview-2.0.0d.png?raw=true)
 
 We only care about a handful of items in this model.
 
