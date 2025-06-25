@@ -183,7 +183,7 @@ Now that we can see the fundamentals of a pipeline lets step it up and move to 3
 
 Another concept we need to talk about are transforms. When we talk about a Transform really what that means is we construct a 4x4 matrix. A transform is a Vector3 position, Vector3 scale, and Quaternion rotation (Vector4). We can combine those three things into a single mat4x4 which is what makes it a very useful data structure.
 
-Both cameras and Models will have a transform. How we pass those transforms is but using an UBO or Uniform Buffer Object. Think of this as a normal buffer but built from a Struct.
+Both cameras and Models will have a transform. How we pass those transforms is by using an UBO or Uniform Buffer Object. Think of this as a normal buffer but built from a Struct.
 
 For a camera we often will refer to that transform matrix as the View matrix. Think of it as the location of the camera in the world. We then also build a Projection Matrix. You know how when you have two objects of the same size, but the farther away one looks smaller, that is what a projection matrix does mathematically. The alternative to have an orthographic camera, think like how blueprints are always their exact size.
 
