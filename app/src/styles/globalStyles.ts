@@ -25,6 +25,10 @@ export const globalStyles = css`
     color: var(--cara-primary);
   }
 
+  img {
+    width: 100%;
+  }
+
   .flex {
     display: flex;
     flex-direction: column;
